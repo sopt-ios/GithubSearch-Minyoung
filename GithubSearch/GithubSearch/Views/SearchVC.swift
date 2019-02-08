@@ -12,6 +12,7 @@ class SearchVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     var itemList = [Items]()
+    var reposNumList = [Int]()
     var curPage = 1
     
     override func viewDidLoad() {
@@ -25,7 +26,6 @@ class SearchVC: UIViewController {
     func getData() {
         let input = "sopt"
         SearchService.shared.getResultList(page: curPage, limit: 20, input: input) { (data) in
-            
             self.curPage += 1
             self.itemList += data
             self.tableView.reloadData()
@@ -60,15 +60,20 @@ extension SearchVC : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! SearchResultCell
-        cell.nameLb.text = itemList[indexPath.row].login
-        cell.reposNum.text = "0"
+        let login = itemList[indexPath.row].login
+        
+        cell.nameLb.text = login
+        
+        SearchService.shared.getNumOfRepos(name: login ?? "") { (data) in
+            cell.reposNum.text = "\(data)"
+            //self.tableView.reloadData()
+        }
         
         if let imageUrl = itemList[indexPath.row].avatar_url{
             let image = ImageCache.shared.image(forUrl: imageUrl)
             { (image) in
                 if image != nil {
                     cell.imgView.image = image
-                    //tableView.cellForRow(at: indexPath)?.imageView?.image = image
                 }
             }
             cell.imgView?.image = image ?? #imageLiteral(resourceName: "default")

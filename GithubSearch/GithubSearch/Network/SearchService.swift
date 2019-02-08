@@ -35,7 +35,28 @@ struct SearchService : APIManager {
                 guard let data = res.result.value else {return}
                 guard let itemList = data.items else {return}
                 completion(itemList)
-                print(itemList)
+                
+            case .failure(let err):
+                print(err)
+            }
+        }
+    }
+    
+    func getNumOfRepos(name : String,
+                       completion : @escaping (Int) -> Void) {
+        let header: HTTPHeaders = [
+            "Authorization": token
+        ]
+        
+        let queryURL = userURL + "/" + name
+        
+        Alamofire.request(queryURL, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: header).responseObject { (res: DataResponse<ResponseBody>) in
+            switch res.result {
+                
+            case .success:
+                guard let data = res.result.value else {return}
+                guard let reposNum = data.public_repos else {return}
+                completion(reposNum)
                 
             case .failure(let err):
                 print(err)
