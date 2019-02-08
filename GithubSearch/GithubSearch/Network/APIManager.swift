@@ -12,6 +12,6 @@ protocol APIManager {}
 
 extension APIManager {
     static func url(_ path: String) -> String {
-        return "http://52.78.243.92:8080"+path
+        return "https://api.github.com"+path
     }
 }

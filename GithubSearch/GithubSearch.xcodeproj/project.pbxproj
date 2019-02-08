@@ -15,6 +15,13 @@
 		8E20CC80220D71F400C8ECCF /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E20CC7F220D71F400C8ECCF /* NetworkResult.swift */; };
 		8E20CC82220D71FF00C8ECCF /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E20CC81220D71FF00C8ECCF /* APIManager.swift */; };
 		8E20CC84220D721000C8ECCF /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E20CC83220D721000C8ECCF /* SearchService.swift */; };
+		8E20CC87220D805C00C8ECCF /* ResponseBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E20CC86220D805C00C8ECCF /* ResponseBody.swift */; };
+		8E20CC89220D806800C8ECCF /* ResponseArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E20CC88220D806800C8ECCF /* ResponseArray.swift */; };
+		8E20CC8B220D825900C8ECCF /* Items.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E20CC8A220D825900C8ECCF /* Items.swift */; };
+		8E20CC8D220DA4CF00C8ECCF /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E20CC8C220DA4CF00C8ECCF /* SearchVC.swift */; };
+		8E20CC8F220DADE600C8ECCF /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E20CC8E220DADE600C8ECCF /* SearchResultCell.swift */; };
+		8E20CC91220DAF1900C8ECCF /* ImageView+RoundCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E20CC90220DAF1900C8ECCF /* ImageView+RoundCorner.swift */; };
+		8E20CC93220DB4C100C8ECCF /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E20CC92220DB4C100C8ECCF /* ImageCache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +34,13 @@
 		8E20CC7F220D71F400C8ECCF /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		8E20CC81220D71FF00C8ECCF /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		8E20CC83220D721000C8ECCF /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
+		8E20CC86220D805C00C8ECCF /* ResponseBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseBody.swift; sourceTree = "<group>"; };
+		8E20CC88220D806800C8ECCF /* ResponseArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseArray.swift; sourceTree = "<group>"; };
+		8E20CC8A220D825900C8ECCF /* Items.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Items.swift; sourceTree = "<group>"; };
+		8E20CC8C220DA4CF00C8ECCF /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
+		8E20CC8E220DADE600C8ECCF /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
+		8E20CC90220DAF1900C8ECCF /* ImageView+RoundCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageView+RoundCorner.swift"; sourceTree = "<group>"; };
+		8E20CC92220DB4C100C8ECCF /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		A447086058B219930C019B34 /* Pods-GithubSearch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GithubSearch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GithubSearch/Pods-GithubSearch.debug.xcconfig"; sourceTree = "<group>"; };
 		B59633E4A62BAE3376997082 /* Pods-GithubSearch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GithubSearch.release.xcconfig"; path = "Pods/Target Support Files/Pods-GithubSearch/Pods-GithubSearch.release.xcconfig"; sourceTree = "<group>"; };
 		D4C42693B507299357060531 /* Pods_GithubSearch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GithubSearch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,6 +79,7 @@
 		8E20CC69220D70DF00C8ECCF /* GithubSearch */ = {
 			isa = PBXGroup;
 			children = (
+				8E20CC85220D77CC00C8ECCF /* Extensions */,
 				8E20CC7E220D71D900C8ECCF /* Views */,
 				8E20CC7D220D71D300C8ECCF /* Network */,
 				8E20CC7C220D71CB00C8ECCF /* Model */,
@@ -80,6 +95,9 @@
 		8E20CC7C220D71CB00C8ECCF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8E20CC86220D805C00C8ECCF /* ResponseBody.swift */,
+				8E20CC88220D806800C8ECCF /* ResponseArray.swift */,
+				8E20CC8A220D825900C8ECCF /* Items.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -90,6 +108,7 @@
 				8E20CC7F220D71F400C8ECCF /* NetworkResult.swift */,
 				8E20CC81220D71FF00C8ECCF /* APIManager.swift */,
 				8E20CC83220D721000C8ECCF /* SearchService.swift */,
+				8E20CC92220DB4C100C8ECCF /* ImageCache.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -97,8 +116,18 @@
 		8E20CC7E220D71D900C8ECCF /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8E20CC8C220DA4CF00C8ECCF /* SearchVC.swift */,
+				8E20CC8E220DADE600C8ECCF /* SearchResultCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		8E20CC85220D77CC00C8ECCF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8E20CC90220DAF1900C8ECCF /* ImageView+RoundCorner.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		8EBD8947BAD10C3570FA200E /* Pods */ = {
@@ -198,6 +227,8 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-GithubSearch/Pods-GithubSearch-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/BaseAPI/BaseAPI.framework",
+				"${BUILT_PRODUCTS_DIR}/GithubAPI/GithubAPI.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 			);
@@ -207,6 +238,8 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BaseAPI.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GithubAPI.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 			);
@@ -244,9 +277,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E20CC93220DB4C100C8ECCF /* ImageCache.swift in Sources */,
+				8E20CC8D220DA4CF00C8ECCF /* SearchVC.swift in Sources */,
 				8E20CC82220D71FF00C8ECCF /* APIManager.swift in Sources */,
 				8E20CC80220D71F400C8ECCF /* NetworkResult.swift in Sources */,
 				8E20CC84220D721000C8ECCF /* SearchService.swift in Sources */,
+				8E20CC91220DAF1900C8ECCF /* ImageView+RoundCorner.swift in Sources */,
+				8E20CC87220D805C00C8ECCF /* ResponseBody.swift in Sources */,
+				8E20CC8B220D825900C8ECCF /* Items.swift in Sources */,
+				8E20CC89220D806800C8ECCF /* ResponseArray.swift in Sources */,
+				8E20CC8F220DADE600C8ECCF /* SearchResultCell.swift in Sources */,
 				8E20CC6B220D70DF00C8ECCF /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
