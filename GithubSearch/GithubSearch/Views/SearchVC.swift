@@ -19,12 +19,20 @@ class SearchVC: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        getData()
+        searchBar.delegate = self
+        
         // Do any additional setup after loading the view.
     }
     
-    func getData() {
-        let input = "sopt"
+    func getData(input : String) {
+        SearchService.shared.getResultList(page: curPage, limit: 20, input: input) { (data) in
+            self.curPage = 1
+            self.itemList = data
+            self.tableView.reloadData()
+        }
+    }
+    
+    func getMoreData(input : String) {
         SearchService.shared.getResultList(page: curPage, limit: 20, input: input) { (data) in
             self.curPage += 1
             self.itemList += data
@@ -81,6 +89,10 @@ extension SearchVC : UITableViewDataSource {
         
         return cell
     }
-    
-    
+}
+
+extension SearchVC : UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        getData(input : searchBar.text ?? "")
+    }
 }
