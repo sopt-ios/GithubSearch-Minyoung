@@ -15,7 +15,6 @@ struct SearchService : APIManager {
     
     let searchURL = url("/search/users")
     let userURL = url("/users")
-    let token = "token d89b05e1c89db461c15158a23a3af58d757dbc9e"
     
     func getResultList(page: Int? = 1,
                        limit: Int = 20,
@@ -23,7 +22,7 @@ struct SearchService : APIManager {
                        completion : @escaping ([Items]) -> Void) {
 
         let header: HTTPHeaders = [
-            "Authorization": token
+            "Authorization": ""
         ]
         
         let queryURL = searchURL + "?q=\(input)&page=\(page ?? 1)&per_page=\(limit)"
@@ -45,7 +44,7 @@ struct SearchService : APIManager {
     func getNumOfRepos(name : String,
                        completion : @escaping (Int) -> Void) {
         let header: HTTPHeaders = [
-            "Authorization": token
+            "Authorization": ""
         ]
         
         let queryURL = userURL + "/" + name

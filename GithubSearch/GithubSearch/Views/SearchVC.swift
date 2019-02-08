@@ -13,7 +13,7 @@ class SearchVC: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     var itemList = [Items]()
     var reposNumList = [Int]()
-    var curPage = 1
+    var curPage = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,40 +25,43 @@ class SearchVC: UIViewController {
     }
     
     func getData(input : String) {
-        SearchService.shared.getResultList(page: curPage, limit: 20, input: input) { (data) in
-            self.curPage = 1
-            self.itemList = data
-            self.tableView.reloadData()
+        if curPage == 0 {
+            SearchService.shared.getResultList(page: curPage, limit: 20, input: input) { (data) in
+                self.curPage = 1
+                self.itemList = data
+                self.tableView.reloadData()
+            }
         }
     }
     
     func getMoreData(input : String) {
-        SearchService.shared.getResultList(page: curPage, limit: 20, input: input) { (data) in
-            self.curPage += 1
-            self.itemList += data
-            self.tableView.reloadData()
+        if curPage > 0 {
+            SearchService.shared.getResultList(page: curPage, limit: 20, input: input) { (data) in
+                self.itemList += data
+                self.tableView.reloadData()
+            }
         }
     }
 }
 
 extension SearchVC : UITableViewDelegate {
-//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-//        if !(indexPath.row + 1 < self.users.count) {
-//            self.isLoading = true
-//            self.getMoreData()
-//        }
-//        let lastSectionIndex = tableView.numberOfSections - 1
-//        let lastRowIndex = tableView.numberOfRows(inSection: lastSectionIndex) - 1
-//        if indexPath.section ==  lastSectionIndex && indexPath.row == lastRowIndex {
-//            // print("this is the last cell")
-//            let spinner = UIActivityIndicatorView(style: .gray)
-//            spinner.startAnimating()
-//            spinner.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: tableView.bounds.width, height: CGFloat(44))
-//
-//            self.tableView.tableFooterView = spinner
-//            self.tableView.tableFooterView?.isHidden = false
-//        }
-//    }
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let text = searchBar.text else {return}
+        if indexPath.row == itemList.count - 1 {
+            self.curPage += 1
+            self.getMoreData(input : text)
+        }
+        let lastSectionIndex = tableView.numberOfSections - 1
+        let lastRowIndex = tableView.numberOfRows(inSection: lastSectionIndex) - 1
+        if indexPath.section ==  lastSectionIndex && indexPath.row == lastRowIndex {
+            let spinner = UIActivityIndicatorView(style: .gray)
+            spinner.startAnimating()
+            spinner.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: tableView.bounds.width, height: CGFloat(44))
+
+            self.tableView.tableFooterView = spinner
+            self.tableView.tableFooterView?.isHidden = false
+        }
+    }
 }
 
 extension SearchVC : UITableViewDataSource {
@@ -93,6 +96,7 @@ extension SearchVC : UITableViewDataSource {
 
 extension SearchVC : UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        curPage = 0
         getData(input : searchBar.text ?? "")
     }
 }
